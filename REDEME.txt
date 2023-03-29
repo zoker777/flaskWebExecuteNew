@@ -1,0 +1,40 @@
+这是flask入门的第一个基础知识学习项目：python上手--flask框架web开发实践
+参考地址：
+1-知乎、https://zhuanlan.zhihu.com/p/104273184?utm_source=wechat_session&utm_medium=social&utm_oi=730126926206750720&utm_campaign=shareopn
+2-B站、https://www.bilibili.com/video/BV17o4y1y7PF?p=1&share_medium=android&share_plat=android&share_session_id=bf25f5aa-5c91-4087-8d73-18e848046870&share_source=WEIXIN&share_tag=s_i&timestamp=1647090385&unique_k=hzNDuX0
+3-微信、https://mp.weixin.qq.com/s/CPY2nyxOfbh5KKvU9laV-A  ##Flask项目结构参考
+
+项目根目录结构： ##这样的分类，相当于将之前写到一个代码文件（app.py）中的逻辑，按功能划分开，当项目逐渐变大变复杂后，这样的划分有助于开发和维护
+myapp - business（服务）：存放业务逻辑或者其他服务类功能
+myapp - news/product/user（路由）：存放该flask程序下多个子业务(子应用)的路由，存放请求路由以及处理逻辑
+myapp - __init__.py：初始化蓝图对象
+myapp - forms（表单）：存放表单对象
+myapp - models（模型）：存放数据模型，即库表在程序中的映射对象，以及对象之间的关系
+static（静态文件）：Flask 约定存放静态文件的目录
+templates（模板）：Flask 约定存放页面模板的目录
+tests：存放测试代码
+
+client：给客户端调用执行机的接口
+server：执行机自动启动的一些任务，比如定时任务
+
+flask2022.db：用flask自带的sqlite创建的数据库
+REDEME.txt：项目说明文件
+requirements.txt：项目依赖模块
+run.py：flask程序启动文件
+settings.py：项目配置文件
+
+----------------------------------------------------------------------------------
+print打印在后台console、logger打印在后台console或文件
+
+#创建虚拟环境：python3 -m venv flask
+start.py - source /usr/local/python3/venv/flask/bin/activate && python3 run.py
+修改项目文件的换行符为LF：File-File Properties-Line separators-换行符改为'\n'
+
+current_app g对象
+
+----------------------------------------------------------------------------------
+ytor交互-传过来的文件名不同，如aa_${day}.tar.gz：flask两个定时任务
+定时任务1：每隔10分钟运行下函数1，函数会检测目录是否有aa文件，有就移动至tmp目录下。
+定时任务2：每隔20分钟运行下函数2，函数会判断flask session或文件中变量status是否为1，为1则代表当前有任务在跑<则不调度脚本，等待>，
+    为0则代表当前无任务在跑，开始调度脚本<先将文件中status改为1，然后拿时间最早的文件来运行，运行完将目录更改为done_aa_${day}，并将文件中status改为0>
+

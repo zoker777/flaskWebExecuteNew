@@ -1,0 +1,1 @@
+{"other_server_param": "omit", "execute_dict": [{"execute_script": "business.sh", "execute_param": "compile"}, {"execute_script": "business.sh", "execute_param": "release"}, {"execute_script": "which python", "execute_param": "command"}]}

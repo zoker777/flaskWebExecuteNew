@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<form name="login" action="/login" method="post" xmlns="http://www.w3.org/1999/html">
+    <!-- html模板处理列表
+    <ul>
+    {% for param in params %}
+        <li><p>{{param}}</p></li>
+    {% endfor %}
+    </ul>
+    -->
+
+    <!-- html模板处理字典 -->
+    <ul>
+    {% for param in params %}
+        <li>{{param}}:{{params[param]}}</li>
+    {% endfor %}
+    </ul>
+
+    <!-- html模板处理列表
+    Hello {{ params[0] }} {{ params[1] }}, please login by:
+    -->
+
+    <!-- html模板处理字典 -->
+    Hello {{ params.get('title','None') }} {{ params['sex'] }}, please login by:
+    <input type="text" name="user" />
+</form>
+{% endblock %}
